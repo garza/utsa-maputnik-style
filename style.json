@@ -41,7 +41,7 @@
       "id": "background",
       "type": "background",
       "paint": {
-        "background-color": "rgb(242,243,240)"
+        "background-color": "rgba(211, 215, 223, 1)"
       }
     },
     {
@@ -168,7 +168,7 @@
         "visibility": "visible"
       },
       "paint": {
-        "fill-color": "rgb(234, 234, 230)",
+        "fill-color": "rgba(238, 161, 109, 1)",
         "fill-opacity": {
           "base": 0.6,
           "stops": [
@@ -181,7 +181,8 @@
               0.6
             ]
           ]
-        }
+        },
+        "fill-outline-color": "rgba(238, 161, 109, 1)"
       }
     },
     {
@@ -276,8 +277,8 @@
       "source-layer": "building",
       "minzoom": 12,
       "paint": {
-        "fill-color": "rgb(234, 234, 229)",
-        "fill-outline-color": "rgb(219, 219, 218)",
+        "fill-color": "rgba(227, 107, 43, 1)",
+        "fill-outline-color": "rgba(227, 107, 43, 1)",
         "fill-antialias": true
       }
     },
@@ -585,26 +586,31 @@
         ]
       ],
       "layout": {
-        "line-cap": "round",
-        "line-join": "round",
-        "visibility": "visible"
+        "line-cap": "butt",
+        "line-join": "bevel",
+        "visibility": "visible",
+        "line-miter-limit": 1
       },
       "paint": {
-        "line-color": "rgb(234, 234, 234)",
+        "line-color": "rgba(249, 220, 195, 1)",
         "line-width": {
           "base": 1.2,
           "stops": [
             [
               13,
-              1
+              9
             ],
             [
-              20,
-              10
+              16,
+              14
+            ],
+            [
+              21,
+              15
             ]
           ]
         },
-        "line-opacity": 0.9
+        "line-opacity": 0.5
       }
     },
     {
@@ -637,7 +643,7 @@
         "visibility": "visible"
       },
       "paint": {
-        "line-color": "hsl(0, 0%, 88%)",
+        "line-color": "rgba(255, 255, 255, 1)",
         "line-width": {
           "base": 1.55,
           "stops": [
@@ -1392,14 +1398,14 @@
         "text-field": "{name}"
       },
       "paint": {
-        "text-color": "#bbb",
-        "text-halo-color": "#fff",
+        "text-color": "rgba(9, 38, 67, 1)",
+        "text-halo-color": "rgba(9, 38, 67, 1)",
         "text-translate": [
           0,
           0
         ],
-        "text-halo-width": 2,
-        "text-halo-blur": 1
+        "text-halo-width": 0.3,
+        "text-halo-blur": 0
       }
     },
     {
