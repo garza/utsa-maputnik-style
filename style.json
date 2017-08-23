@@ -22,16 +22,16 @@
     "openmaptiles:mapbox:source:url": "mapbox://openmaptiles.4qljc88t"
   },
   "center": [
-    10.184401828277089,
-    -1.1368683772161603e-13
+    29.4,
+    -98.5
   ],
-  "zoom": 0.8902641636539237,
+  "zoom": 16,
   "bearing": 0,
   "pitch": 0,
   "sources": {
     "openmaptiles": {
       "type": "vector",
-      "url": "https://free.tilehosting.com/data/v3.json?key={key}"
+      "url": "http://gitaroo.lg:8080/data/v3.json"
     }
   },
   "sprite": "https://openmaptiles.github.io/positron-gl-style/sprite",
@@ -107,45 +107,6 @@
       }
     },
     {
-      "id": "landcover_glacier",
-      "type": "fill",
-      "source": "openmaptiles",
-      "source-layer": "landcover",
-      "maxzoom": 8,
-      "filter": [
-        "all",
-        [
-          "==",
-          "$type",
-          "Polygon"
-        ],
-        [
-          "==",
-          "subclass",
-          "glacier"
-        ]
-      ],
-      "layout": {
-        "visibility": "visible"
-      },
-      "paint": {
-        "fill-color": "hsl(0, 0%, 98%)",
-        "fill-opacity": {
-          "base": 1,
-          "stops": [
-            [
-              0,
-              1
-            ],
-            [
-              8,
-              0.5
-            ]
-          ]
-        }
-      }
-    },
-    {
       "id": "landuse_residential",
       "type": "fill",
       "source": "openmaptiles",
@@ -183,6 +144,45 @@
           ]
         },
         "fill-outline-color": "rgba(238, 161, 109, 1)"
+      }
+    },
+    {
+      "id": "landcover_glacier",
+      "type": "fill",
+      "source": "openmaptiles",
+      "source-layer": "landcover",
+      "maxzoom": 8,
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "Polygon"
+        ],
+        [
+          "==",
+          "subclass",
+          "glacier"
+        ]
+      ],
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "fill-color": "hsl(0, 0%, 98%)",
+        "fill-opacity": {
+          "base": 1,
+          "stops": [
+            [
+              0,
+              1
+            ],
+            [
+              8,
+              0.5
+            ]
+          ]
+        }
       }
     },
     {
@@ -268,18 +268,6 @@
         "text-halo-color": "rgb(242,243,240)",
         "text-halo-width": 1,
         "text-halo-blur": 1
-      }
-    },
-    {
-      "id": "building",
-      "type": "fill",
-      "source": "openmaptiles",
-      "source-layer": "building",
-      "minzoom": 12,
-      "paint": {
-        "fill-color": "rgba(227, 107, 43, 1)",
-        "fill-outline-color": "rgba(227, 107, 43, 1)",
-        "fill-antialias": true
       }
     },
     {
@@ -2197,6 +2185,232 @@
             ]
           ]
         }
+      }
+    },
+    {
+      "id": "building",
+      "type": "fill",
+      "source": "openmaptiles",
+      "source-layer": "building",
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "Polygon"
+        ]
+      ],
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "fill-color": "rgba(241, 90, 34, 0.9)",
+        "fill-outline-color": {
+          "stops": [
+            [
+              15,
+              "rgba(241, 90, 34, 1)"
+            ],
+            [
+              16,
+              "rgba(241, 90, 34, 1)"
+            ]
+          ]
+        },
+        "fill-opacity": {
+          "base": 1,
+          "stops": [
+            [
+              13,
+              0
+            ],
+            [
+              15,
+              1
+            ]
+          ]
+        },
+        "fill-antialias": true
+      }
+    },
+    {
+      "id": "parking",
+      "type": "fill",
+      "source": "openmaptiles",
+      "source-layer": "parking",
+      "paint": {
+        "fill-color": "rgba(178, 184, 199, 0.7)",
+        "fill-outline-color": "rgba(164, 179, 201, 1)",
+        "fill-opacity": {
+          "base": 1,
+          "stops": [
+            [
+              13,
+              0
+            ],
+            [
+              15,
+              1
+            ]
+          ]
+        },
+        "fill-antialias": true
+      },
+      "layout": {
+        "visibility": "visible"
+      },
+      "filter": [
+        "all",
+        [
+          "!=",
+          "parking",
+          "multi-storey"
+        ]
+      ]
+    },
+    {
+      "id": "building_label-ref",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "buildinginfo",
+      "minzoom": 15,
+      "maxzoom": 24,
+      "filter": [
+        "all"
+      ],
+      "layout": {
+        "text-size": {
+          "stops": [
+            [
+              15,
+              18
+            ],
+            [
+              16,
+              22
+            ],
+            [
+              17,
+              11
+            ],
+            [
+              17.3,
+              22
+            ],
+            [
+              19,
+              11
+            ]
+          ]
+        },
+        "text-font": [
+          "Open Sans Bold",
+          "Klokantech Noto Sans CJK Regular"
+        ],
+        "visibility": "none",
+        "text-offset": [
+          0,
+          0.5
+        ],
+        "icon-size": 1,
+        "text-anchor": "center",
+        "text-field": {
+          "stops": [
+            [
+              6,
+              "{ref}"
+            ],
+            [
+              17,
+              "{name}"
+            ]
+          ]
+        },
+        "text-max-width": 4,
+        "text-justify": "center",
+        "symbol-placement": "point",
+        "text-line-height": 1.1,
+        "text-pitch-alignment": "viewport",
+        "text-rotation-alignment": "viewport"
+      },
+      "paint": {
+        "text-color": "rgba(0, 0, 0, 1)",
+        "text-halo-width": 1,
+        "text-halo-color": "rgba(239, 241, 241, 1)",
+        "text-halo-blur": 1,
+        "text-translate-anchor": "map",
+        "icon-translate-anchor": "map"
+      }
+    },
+    {
+      "id": "building_label",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "buildinginfo",
+      "minzoom": 5,
+      "maxzoom": 24,
+      "filter": [
+        "all"
+      ],
+      "layout": {
+        "text-size": 16,
+        "text-font": [
+          "Open Sans Bold",
+          "Klokantech Noto Sans CJK Regular"
+        ],
+        "visibility": "visible",
+        "text-offset": [
+          0,
+          0.5
+        ],
+        "icon-size": 1,
+        "text-anchor": "center",
+        "text-field": "{name}",
+        "text-max-width": 8,
+        "text-justify": "center",
+        "symbol-placement": "point"
+      },
+      "paint": {
+        "text-color": "rgba(0, 0, 0, 1)",
+        "text-halo-width": 1,
+        "text-halo-color": "rgba(255,255,255,1)",
+        "text-halo-blur": 1
+      }
+    },
+    {
+      "id": "parking_label",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "parking",
+      "minzoom": 5,
+      "maxzoom": 24,
+      "filter": [
+        "all"
+      ],
+      "layout": {
+        "text-size": 12,
+        "text-font": [
+          "Open Sans Bold",
+          "Klokantech Noto Sans CJK Regular"
+        ],
+        "visibility": "none",
+        "text-offset": [
+          0,
+          0.5
+        ],
+        "icon-size": 1,
+        "text-anchor": "center",
+        "text-field": "{name}",
+        "text-max-width": 12,
+        "text-justify": "center",
+        "symbol-placement": "line"
+      },
+      "paint": {
+        "text-color": "rgba(0, 0, 0, 1)",
+        "text-halo-width": 1,
+        "text-halo-color": "rgba(255,255,255,0.75)",
+        "text-halo-blur": 1,
+        "text-translate-anchor": "map"
       }
     }
   ],
